@@ -92,6 +92,9 @@ def default_compute_score(data_source, solution_str, ground_truth, extra_info=No
         if "acc" not in res:
             score = res.get("score", 0)
             res["acc"] = (score == 1.0) if isinstance(score, (int, float)) else bool(score)
+        # Ensure 'pred' is never None (metric_utils expects str or numeric, None causes np.mean crash)
+        if "pred" in res and res["pred"] is None:
+            res["pred"] = ""
         return res
     elif isinstance(res, (int, float, bool)):
         score = float(res)
