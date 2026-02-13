@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*.so
+.DS_Store
+
+# 忽略大文件和日志
+*.log
+*.pth
+*.ckpt
+data/
+output/
+checkpoints/
+.vscode/
